@@ -5,67 +5,67 @@ USE ieee.numeric_std.ALL;
 ENTITY EXec IS
 	PORT(
 	-- Decode interface synchro
-			dec2exe_empty	: in Std_logic; -- 
+			dec2exe_empty	: in Std_logic;  -- 
 			exe_pop			: out Std_logic; -- 
 
 	-- Decode interface operands
-			dec_op1			: in Std_Logic_Vector(31 downto 0); -- first alu input       --
-			dec_op2			: in Std_Logic_Vector(31 downto 0); -- shifter input         -- 
-			dec_exe_dest	: in Std_Logic_Vector(3 downto 0); -- Rd destination         
-			dec_exe_wb		: in Std_Logic; -- Rd destination write back
-			dec_flag_wb		: in Std_Logic; -- CSPR modifiy
+			dec_op1			: in Std_Logic_Vector(31 downto 0); -- first alu input -- Op1
+			dec_op2			: in Std_Logic_Vector(31 downto 0); -- shifter input   -- Op2 
+			dec_exe_dest	: in Std_Logic_Vector(3 downto 0); -- Rd destination  -- Direct Copy  
+			dec_exe_wb		: in Std_Logic; -- Rd destination write back -- Direct Copy
+			dec_flag_wb		: in Std_Logic; -- CSPR modifiy  -- Direct Copy
 
 	-- Decode to mem interface 
-			dec_mem_data	: in Std_Logic_Vector(31 downto 0); -- data to MEM W         --
-			dec_mem_dest	: in Std_Logic_Vector(3 downto 0); -- Destination MEM R       --
-			dec_pre_index 	: in Std_logic;   --
+			dec_mem_data	: in Std_Logic_Vector(31 downto 0); -- data to MEM W   (FIFO)    
+			dec_mem_dest	: in Std_Logic_Vector(3 downto 0); -- Destination MEM R  (FIFO)
+			dec_pre_index 	: in Std_logic;   -- Select alu_res or op1 for mem_adr
 
-			dec_mem_lw		: in Std_Logic;  --
-			dec_mem_lb		: in Std_Logic;  --
-			dec_mem_sw		: in Std_Logic;  --
-			dec_mem_sb		: in Std_Logic;  --
+			dec_mem_lw		: in Std_Logic;  -- FIFO Input
+			dec_mem_lb		: in Std_Logic;  -- FIFO Input
+			dec_mem_sw		: in Std_Logic;  -- FIFO Input
+			dec_mem_sb		: in Std_Logic;  -- FIFO Input
 
 	-- Shifter command
-			dec_shift_lsl	: in Std_Logic; --
-			dec_shift_lsr	: in Std_Logic;  --
-			dec_shift_asr	: in Std_Logic;  --
-			dec_shift_ror	: in Std_Logic;  --
-			dec_shift_rrx	: in Std_Logic;	-- 
-			dec_shift_val	: in Std_Logic_Vector(4 downto 0); --
-			dec_cy			: in Std_Logic; --
+			dec_shift_lsl	: in Std_Logic;  -- Logical Shift Left
+			dec_shift_lsr	: in Std_Logic;  -- Logical Shift Right
+			dec_shift_asr	: in Std_Logic;  -- Arithmetic Shift Right
+			dec_shift_ror	: in Std_Logic;  -- Rotate Right
+			dec_shift_rrx	: in Std_Logic;	 -- RRX
+			dec_shift_val	: in Std_Logic_Vector(4 downto 0); -- Shift value
+			dec_cy			: in Std_Logic;  -- Carry in (Shifter)
 
 	-- Alu operand selection
-			dec_comp_op1	: in Std_Logic; --
-			dec_comp_op2	: in Std_Logic; --
-			dec_alu_cy 		: in Std_Logic; --
+			dec_comp_op1	: in Std_Logic; -- dec_op1 ou NOT dec_op1
+			dec_comp_op2	: in Std_Logic; -- dec_op2 ou NOT dec_op2
+			dec_alu_cy 		: in Std_Logic; -- Carry in (ALU)
 
 	-- Alu command
-			dec_alu_cmd		: in Std_Logic_Vector(1 downto 0); --
+			dec_alu_cmd		: in Std_Logic_Vector(1 downto 0); -- ALU command (ADD, AND, OR, XOR)
 
 	-- Exe bypass to decod
-			exe_res			: out Std_Logic_Vector(31 downto 0); --
+			exe_res			: out Std_Logic_Vector(31 downto 0); -- alu_res -> exe_res 
 
-			exe_c			: out Std_Logic; --
-			exe_v			: out Std_Logic; --
-			exe_n			: out Std_Logic; --
-			exe_z			: out Std_Logic; --
+			exe_c			: out Std_Logic; -- Carry out (EXEC)
+			exe_v			: out Std_Logic; -- Overflow (EXEC)
+			exe_n			: out Std_Logic; -- Negative (EXEC)
+			exe_z			: out Std_Logic; -- Zero (EXEC)
 
-			exe_dest		: out Std_Logic_Vector(3 downto 0); -- Rd destination
-			exe_wb			: out Std_Logic; -- Rd destination write back
-			exe_flag_wb		: out Std_Logic; -- CSPR modifiy
+			exe_dest		: out Std_Logic_Vector(3 downto 0); -- Rd destination -- Copy dec_exe_dest
+			exe_wb			: out Std_Logic; -- Rd destination write back -- Copy dec_exe_wb
+			exe_flag_wb		: out Std_Logic; -- CSPR modifiy -- Copy dec_exe_flag_wb
 
 	-- Mem interface
-			exe_mem_adr		: out Std_Logic_Vector(31 downto 0); -- Alu res register --
-			exe_mem_data	: out Std_Logic_Vector(31 downto 0); --
-			exe_mem_dest	: out Std_Logic_Vector(3 downto 0); --
+			exe_mem_adr		: out Std_Logic_Vector(31 downto 0); -- FIFO Output, Rd address 
+			exe_mem_data	: out Std_Logic_Vector(31 downto 0); -- FIFO Output, Rd data
+			exe_mem_dest	: out Std_Logic_Vector(3 downto 0); -- FIFO Output, Rd destination
 
-			exe_mem_lw		: out Std_Logic;--
-			exe_mem_lb		: out Std_Logic;--
-			exe_mem_sw		: out Std_Logic;--
-			exe_mem_sb		: out Std_Logic;--
+			exe_mem_lw		: out Std_Logic;-- FIFO Output, Rd command
+			exe_mem_lb		: out Std_Logic;-- FIFO Output, Rd command
+			exe_mem_sw		: out Std_Logic;-- FIFO Output, Rd command
+			exe_mem_sb		: out Std_Logic;-- FIFO Output, Rd command
 
-			exe2mem_empty	: out Std_logic;--
-			mem_pop			: in Std_logic;--
+			exe2mem_empty	: out Std_logic;-- FIFO Output, empty
+			mem_pop			: in Std_logic; -- FIFO Input, pop
 
 	-- global interface
 			ck				: in Std_logic; -- clock
@@ -85,7 +85,7 @@ COMPONENT shifter
 		shift_asr	: in Std_Logic;
 		shift_ror	: in Std_Logic;
 		shift_rrx	: in Std_Logic;
-		sh_val		: in Std_Logic_Vector(4 downto 0);
+		shift_val	: in Std_Logic_Vector(4 downto 0);
 
 		din			: in Std_Logic_Vector(31 downto 0);
 		cin			: in Std_Logic;
@@ -161,7 +161,7 @@ BEGIN
 				shift_asr	=> dec_shift_asr,
                 shift_ror	=> dec_shift_ror,
 				shift_rrx	=> dec_shift_rrx,
-                sh_val		=> dec_shift_val,
+                shift_val	=> dec_shift_val,
 
 				din			=> dec_op2,
 				cin			=> dec_cy,
