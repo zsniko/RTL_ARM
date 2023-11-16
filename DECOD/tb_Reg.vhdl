@@ -226,8 +226,8 @@ BEGIN
                     radr3 <= "0000";
 
                     
-
-                    inval1 <= rand_slv(1)(0);
+                    inval1 <= '1';
+                    --inval1 <= rand_slv(1)(0);
                     inval2 <= '0';
                     inval_czn <= '0';
                     inval_ovr <= '0';
