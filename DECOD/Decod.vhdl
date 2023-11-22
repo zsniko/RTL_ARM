@@ -139,7 +139,7 @@ component reg
 		inc_pc		: in Std_Logic;
 	
 	-- global interface
-		ck				: in Std_Logic;
+		ck			: in Std_Logic;
 		reset_n		: in Std_Logic;
 		vdd			: in bit;
 		vss			: in bit);

@@ -1,0 +1,3 @@
+# Ignore DECOD useless files 
+DECOD/brouillon.vhdl
+DECOD/Reg.vhdl
