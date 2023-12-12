@@ -1,16 +1,25 @@
 v 4
-file . "adder_32b.vhdl" "4c9dce51275f1b4e6203c88a6d6a1407b59d8457" "20231116150444.300":
-  entity add_32b at 1( 0) + 0 on 283;
-  architecture behavior of add_32b at 14( 292) + 0 on 284;
-file . "add_1b.vhdl" "fcb372239676e0b8488d383b387beb49b586020b" "20231116150434.356":
-  entity add_1b at 2( 1) + 0 on 279;
-  architecture behavior of add_1b at 14( 229) + 0 on 280;
-file . "adder_4b.vhdl" "7666f119cb0024bae960bd453a98e0cd6a350480" "20231116150441.113":
-  entity add_4b at 2( 1) + 0 on 281;
-  architecture behav of add_4b at 15( 279) + 0 on 282;
+file . "tb_Decod.vhdl" "d8fe52e8866a9f0b420e7b057fc55146a6ee5b2f" "20231207084236.610":
+  entity tb_decod at 1( 0) + 0 on 435;
+  architecture simu_decod of tb_decod at 8( 103) + 0 on 436;
+file . "Decod.vhdl" "a07936e61c2ca9e170a913511ee992614ea436fd" "20231207084235.116":
+  entity decod at 1( 0) + 0 on 433;
+  architecture behavior of decod at 82( 2877) + 0 on 434;
+file . "fifo.vhdl" "aeb7286cdf6aece882a37b4d3ea44bc7153be130" "20231207000632.302":
+  entity fifo at 1( 0) + 0 on 323;
+  architecture dataflow of fifo at 25( 414) + 0 on 324;
+file . "adder_32b.vhdl" "4c9dce51275f1b4e6203c88a6d6a1407b59d8457" "20231206215150.945":
+  entity add_32b at 1( 0) + 0 on 293;
+  architecture behavior of add_32b at 14( 292) + 0 on 294;
+file . "add_1b.vhdl" "fcb372239676e0b8488d383b387beb49b586020b" "20231206215142.932":
+  entity add_1b at 2( 1) + 0 on 289;
+  architecture behavior of add_1b at 14( 229) + 0 on 290;
+file . "adder_4b.vhdl" "7666f119cb0024bae960bd453a98e0cd6a350480" "20231206215147.958":
+  entity add_4b at 2( 1) + 0 on 291;
+  architecture behav of add_4b at 15( 279) + 0 on 292;
 file . "tb_Reg.vhdl" "5055cede2cbf5c8989848c120a52f564135e1c20" "20231116150503.839":
   entity tb_reg at 1( 0) + 0 on 287;
   architecture simu of tb_reg at 9( 124) + 0 on 288;
-file . "register.vhdl" "557b243f77462b0e350de01f48ca616d17f985c2" "20231116150448.987":
-  entity reg at 1( 0) + 0 on 285;
-  architecture behavior of reg at 69( 1970) + 0 on 286;
+file . "register.vhdl" "67c81433e8a8583ade323b97b5dddda574952339" "20231207022508.437":
+  entity reg at 202( 5857) + 0 on 389;
+  architecture behavior of reg at 270( 7451) + 0 on 390;
