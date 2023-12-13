@@ -82,7 +82,7 @@
 -- 	signal r_data : data_array :=(others => (others=>'0')); -- register data r0-r15, accessible as r_data(i)
 --  	-- Register Bank (r0-r15) Valid bit
 -- 	type valid_array is array (0 to 15) of Std_Logic;
--- 	signal r_valid : valid_array; -- register valid bit r0-r15
+-- 	signal r_valid : valid_array :=((others=>'0')); -- register valid bit r0-r15
 -- 	-- PC
 -- 	signal PCinc4 : Std_Logic_Vector(31 downto 0); -- PC + 4
 -- 	-- 2 Validity bits for 4 flags 
@@ -111,23 +111,28 @@
 -- 						r_data(i) <= (others => '0');
 -- 						r_valid(i) <= '1'; 
 -- 					else
--- 						if (inval_adr1 = std_logic_vector(to_unsigned(i, 4)) and inval1 = '1') or 
--- 							(inval_adr2 = std_logic_vector(to_unsigned(i, 4)) and inval2 = '1') then
+-- 						if (inval_adr1 = std_logic_vector(to_unsigned(i, 4)) and inval1 = '1' ) or 
+-- 							(inval_adr2 = std_logic_vector(to_unsigned(i, 4)) and inval2 = '1' ) then
 -- 							r_valid(i) <= '0';
 --                             validity := '0';
+-- 						else
+-- 							r_valid(i) <= '1';
+--                             validity := '1';
 -- 						end if; 
 						
 -- 						if wen1 = '1' and wadr1 = std_logic_vector(to_unsigned(i, 4)) and validity ='0' then
 -- 								r_data(i) <= wdata1;
 -- 								r_valid(i) <= '1';
--- 						elsif wen2 = '1' and wadr2 = std_logic_vector(to_unsigned(i, 4)) and validity ='0'  then
+-- 								validity := '1';
+-- 						elsif wen2 = '1' and wadr2 = std_logic_vector(to_unsigned(i, 4)) and validity ='0' then
 -- 								r_data(i) <= wdata2;
 -- 								r_valid(i) <= '1';
+-- 								validity := '1';
 -- 						end if;
-
---                         if inc_pc = '1' and i=15 then 
---                             r_data(i) <= PCinc4;
---                         end if ;
+						
+-- 						if inc_pc = '1' and i=15 and validity = '1' then 
+-- 								r_data(i) <= PCinc4;
+-- 						end if;
 
 -- 					end if;
 -- 				end if;
@@ -198,6 +203,19 @@
 -- 	reg_vv <= v_valid;
 
 -- END Behavior;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 library ieee;
 use ieee.std_logic_1164.all;

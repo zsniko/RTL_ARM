@@ -605,7 +605,7 @@ begin
 	inval_ovr <= inval_czn;
 
 	
-	-- inval_exe <=	'1'	when (cond = '1' and condv = '1') and alu_wb = '1' and dec2exe_push = '1' else '0';
+	 --inval_exe <=	'1'	when (cond = '1' and condv = '1') and alu_wb = '1' and dec2exe_push = '1' else '0';
 
 	-- inval_mem <=	'1'	when (cond = '1' and condv = '1') and (ldr_i = '1' or ldrb_i = '1') and dec2exe_push = '1' else '0';
 
@@ -862,6 +862,19 @@ end process;
 dec_pop <= if2dec_pop;
 
 end Behavior;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -- library ieee;
 -- use ieee.std_logic_1164.all;
@@ -1457,7 +1470,14 @@ end Behavior;
 
 -- 	inval_exe_adr <= alu_dest;
 
--- 	inval_exe <=	'1'	when (cond = '1' and condv = '1') and alu_wb = '1' and dec2exe_push = '1' else '0';
+-- 	inval_exe 	  <=	'1'			when branch_t = '1' 																 else 
+-- 								'1' 		when regop_t = '1' and (tst_i = '0' and teq_i = '0' and cmp_i = '0' and cmn_i = '0') else -- TST, TEQ, CMP, CMN do not write the result to Rd
+-- 								if_ir(21) 	when trans_t = '1' or mtrans_t = '1' 												 else  
+-- 								'0'			when dec2exe_push = '0'      														 else -- no write if the instruction is not pushed to the fifo
+-- 								'0';
+
+
+-- 	--inval_exe <=	'1'	when (cond = '1' and condv = '1') and alu_wb = '1' and dec2exe_push = '1' else '0';
 
 -- 	inval_mem_adr <= if_ir(15 downto 12) when trans_t = '1'	else mtrans_rd;
 

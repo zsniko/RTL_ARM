@@ -230,18 +230,18 @@ clock: process
     --begin 
         --if rising_edge(ck) then 
             -- ADD r1,r4,r7,asr r6 ; ADD r1,r1,2; 
-                if_ir <= X"e0841657" after 50 ns, X"e2811002" after 70 ns, X"ea000003" after 90 ns, X"e28f1002" after 110 ns; 
+                reset_n<='0' after 10 ns, '1' after 35 ns;
+                if_ir <= X"e0841657" after 50 ns, X"e0811657" after 70 ns, X"e2811002" after 90 ns, X"ea000003" after 110 ns, X"e28f1002" after 130 ns; 
 
-                exe_pop <= '0' after 20 ns;
+                exe_pop <= '1' after 20 ns;
                 exe_c <= '0'    after 20 ns;
                 exe_v <= '0'   after 20 ns;
                 exe_n <= '0'    after 20 ns;
                 exe_z <= '0'    after 20 ns;
-                exe_res <= X"00000111" after 50 ns, X"0000005f" after 90 ns; -- supposition 
-                exe_dest <= "0001" after 50 ns, "1111" after 90 ns, "0010" after 110 ns ;
+                exe_res <= X"00000111" after 50 ns, X"0000005f" after 90 ns, X"01100055" after 110 ns ; -- supposition 
+                exe_dest <= "0001" after 50 ns, "1111" after 110 ns, "0010" after 170 ns ;
                 exe_wb <= '1'           after 20 ns;
                 exe_flag_wb <= '0'      after 20 ns;
-
 
 
                 if_pop <= '1'   after 20 ns;
