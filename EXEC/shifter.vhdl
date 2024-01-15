@@ -189,4 +189,3 @@ BEGIN
     cout <= cout_s16;
 
 END archi;
-    
