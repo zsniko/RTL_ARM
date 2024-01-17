@@ -1,49 +1,49 @@
 v 4
-file . "../MEM/mem.vhdl" "97ecd6abc10b16bdc8804905096130cc853ecae8" "20231213160837.263":
-  entity mem at 1( 0) + 0 on 39;
-  architecture behavior of mem at 41( 1035) + 0 on 40;
-file . "../EXEC/shifter.vhdl" "eb5dc2fc1cda1f6fe66c495a34e2e961c6775f94" "20240115143146.108":
-  entity shifter at 1( 0) + 0 on 1499;
-  architecture archi of shifter at 22( 555) + 0 on 1500;
-file . "../EXEC/adder_32b.vhdl" "4c9dce51275f1b4e6203c88a6d6a1407b59d8457" "20240115143509.810":
-  entity add_32b at 1( 0) + 0 on 1509;
-  architecture behavior of add_32b at 14( 292) + 0 on 1510;
-file . "../EXEC/add_1b.vhdl" "fcb372239676e0b8488d383b387beb49b586020b" "20240115143509.762":
-  entity add_1b at 2( 1) + 0 on 1505;
-  architecture behavior of add_1b at 14( 229) + 0 on 1506;
-file . "../DECOD/reg.vhdl" "8c338da043d554b4491f0dd660391220c11e06b8" "20240115143145.451":
-  entity reg at 1( 0) + 0 on 1487;
-  architecture behavior of reg at 69( 1847) + 0 on 1488;
-file . "../FIFO/fifo.vhdl" "aa3aa692073359d0226318279eea2b858524f4ef" "20231213162543.284":
-  entity fifo at 1( 0) + 0 on 159;
-  architecture dataflow of fifo at 25( 414) + 0 on 160;
-file . "dcache.vhdl" "253c47942f1791113ced310a3e406e8c882db18d" "20231213160836.325":
-  entity dcache at 1( 0) + 0 on 15;
-  architecture behavior of dcache at 26( 532) + 0 on 16;
-file . "ram.vhdl" "590c7c18afda585ad1a0caf256cf688264c8e28d" "20231213160836.275":
-  package ram at 1( 0) + 0 on 11 body;
-  package body ram at 26( 915) + 0 on 12;
-file . "icache.vhdl" "7ed8f6502e51831d37788841eb96febf8ccad09f" "20231213160836.299":
-  entity icache at 1( 0) + 0 on 13;
-  architecture behavior of icache at 20( 398) + 0 on 14;
-file . "main_tb.vhdl" "c616ea2d841e1249ce5264316814fa2c4a29d28f" "20231213172917.403":
-  entity main_tb at 1( 0) + 0 on 661;
-  architecture behav of main_tb at 14( 180) + 0 on 662;
+file . "../CORE/arm_core.vhdl" "42a1a57931423e266b9e413970b85e285553c92a" "20240117214952.811":
+  entity arm_core at 1( 0) + 0 on 2021;
+  architecture struct of arm_core at 33( 685) + 0 on 2022;
+file . "../EXEC/exec.vhdl" "8495d5eb27993e1764505e098c663e0a91e9c004" "20240117214952.753":
+  entity exec at 1( 0) + 0 on 2019;
+  architecture behavior of exec at 79( 3109) + 0 on 2020;
+file . "../EXEC/alu.vhdl" "e60a0574aa28130a29cfa28a0b09c426c4e7cc50" "20240117214952.713":
+  entity alu at 1( 0) + 0 on 2017;
+  architecture behavioral of alu at 20( 928) + 0 on 2018;
+file . "../EXEC/adder_4b.vhdl" "7666f119cb0024bae960bd453a98e0cd6a350480" "20240117214952.650":
+  entity add_4b at 2( 1) + 0 on 2013;
+  architecture behav of add_4b at 15( 279) + 0 on 2014;
+file . "../DECOD/decod.vhdl" "d0558a209a7583240a67136d7ad2e4b49d5dd84d" "20240117214536.061":
+  entity decod at 1( 0) + 0 on 1997;
+  architecture behavior of decod at 82( 2273) + 0 on 1998;
 file . "../IFETCH/ifetch.vhdl" "17672bdef9f2c24907c03917f2651a2b114fa28b" "20231213162722.959":
   entity ifetch at 1( 0) + 0 on 177;
   architecture behavior of ifetch at 32( 727) + 0 on 178;
-file . "../DECOD/decod.vhdl" "e64bd93670212bf7ea3e8315580f37380342e418" "20240115143145.731":
-  entity decod at 3( 2) + 0 on 1489;
-  architecture behavior of decod at 84( 2284) + 0 on 1490;
-file . "../EXEC/adder_4b.vhdl" "7666f119cb0024bae960bd453a98e0cd6a350480" "20240115143509.785":
-  entity add_4b at 2( 1) + 0 on 1507;
-  architecture behav of add_4b at 15( 279) + 0 on 1508;
-file . "../EXEC/alu.vhdl" "e60a0574aa28130a29cfa28a0b09c426c4e7cc50" "20240115143509.846":
-  entity alu at 1( 0) + 0 on 1511;
-  architecture behavioral of alu at 20( 928) + 0 on 1512;
-file . "../EXEC/exec.vhdl" "f7670db7424877b23b7e15a66522351d1c230ff7" "20240115143509.887":
-  entity exec at 1( 0) + 0 on 1513;
-  architecture behavior of exec at 79( 2271) + 0 on 1514;
-file . "../CORE/arm_core.vhdl" "42a1a57931423e266b9e413970b85e285553c92a" "20240115143509.954":
-  entity arm_core at 1( 0) + 0 on 1515;
-  architecture struct of arm_core at 33( 685) + 0 on 1516;
+file . "main_tb.vhdl" "c616ea2d841e1249ce5264316814fa2c4a29d28f" "20231213172917.403":
+  entity main_tb at 1( 0) + 0 on 661;
+  architecture behav of main_tb at 14( 180) + 0 on 662;
+file . "icache.vhdl" "7ed8f6502e51831d37788841eb96febf8ccad09f" "20231213160836.299":
+  entity icache at 1( 0) + 0 on 13;
+  architecture behavior of icache at 20( 398) + 0 on 14;
+file . "ram.vhdl" "590c7c18afda585ad1a0caf256cf688264c8e28d" "20231213160836.275":
+  package ram at 1( 0) + 0 on 11 body;
+  package body ram at 26( 915) + 0 on 12;
+file . "dcache.vhdl" "253c47942f1791113ced310a3e406e8c882db18d" "20231213160836.325":
+  entity dcache at 1( 0) + 0 on 15;
+  architecture behavior of dcache at 26( 532) + 0 on 16;
+file . "../FIFO/fifo.vhdl" "aa3aa692073359d0226318279eea2b858524f4ef" "20231213162543.284":
+  entity fifo at 1( 0) + 0 on 159;
+  architecture dataflow of fifo at 25( 414) + 0 on 160;
+file . "../DECOD/reg.vhdl" "544e97a5f36fb930729652db55a58345642acd33" "20240115143556.309":
+  entity reg at 1( 0) + 0 on 1619;
+  architecture behavior of reg at 69( 1594) + 0 on 1620;
+file . "../EXEC/add_1b.vhdl" "fcb372239676e0b8488d383b387beb49b586020b" "20240117214952.626":
+  entity add_1b at 2( 1) + 0 on 2011;
+  architecture behavior of add_1b at 14( 229) + 0 on 2012;
+file . "../EXEC/adder_32b.vhdl" "4c9dce51275f1b4e6203c88a6d6a1407b59d8457" "20240117214952.676":
+  entity add_32b at 1( 0) + 0 on 2015;
+  architecture behavior of add_32b at 14( 292) + 0 on 2016;
+file . "../EXEC/shifter.vhdl" "13b9ea10c1e4c6265836ecd9d53a06415169488c" "20240115142340.119":
+  entity shifter at 1( 0) + 0 on 1597;
+  architecture archi of shifter at 27( 719) + 0 on 1598;
+file . "../MEM/mem.vhdl" "97ecd6abc10b16bdc8804905096130cc853ecae8" "20231213160837.263":
+  entity mem at 1( 0) + 0 on 39;
+  architecture behavior of mem at 41( 1035) + 0 on 40;

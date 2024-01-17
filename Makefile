@@ -3,13 +3,13 @@ LD_ARM = /usr/bin/arm-linux-gnueabihf-ld
 CFLAGS = -march=armv2a -mno-thumb-interwork -Wall -O1
 LD_FLAGS = -Bstatic -fix-v4bx
 
-all : test_add
+all : test_pgcd
 
-test_add : test_add.o
-	${LD_ARM} ${LD_FLAGS} -T sections.lds -o test_add test_add.o
+test_pgcd : test_pgcd.o
+	${LD_ARM} ${LD_FLAGS} -T sections.lds -o test_pgcd test_pgcd.o
 
-test_add.o : test_add.s
-	${AS_ARM} -c test_add.s -o test_add.o
+test_pgcd.o : test_pgcd.s
+	${AS_ARM} -c test_pgcd.s -o test_pgcd.o
 
 clean :
-	rm -f test_add *.o
+	rm -f test_pgcd *.o

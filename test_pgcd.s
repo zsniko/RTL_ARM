@@ -1,4 +1,5 @@
-@@@@@@@@@@@@@ PGCD @@@@@@@@@@@@@@
+@@@@@@@@@@@@@ PGCD OK @@@@@@@@@@@@@@
+
 	.text
 	.globl	_start
 
@@ -30,7 +31,6 @@ _good :
 	nop
 
 AdrStack:  .word 0x80000000
-
 
 @ 	.text
 @ 	.globl	_start
