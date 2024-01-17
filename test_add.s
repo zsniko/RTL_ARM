@@ -39,7 +39,8 @@
 
 
 @ /*----------------------------------------------------------------
-@ //           test add                                           //
+@ //           test add        	.text
+	.globl	_start                                    //
 @ ----------------------------------------------------------------*/
 @ 	.text
 @ 	.globl	_start 
@@ -74,20 +75,27 @@
 
 
 	
-	mov r0, #7
+	.text
+	.globl	_start 
+
+_start:
+	mov r0, #5
 	mov r1, #3
-	nop
-	subs r2, r0, r1
+
 while:
-	subhs r0, r0, r1
-	submi r1, r1, r0
+	cmp r0, r1 
+	BEQ end 
+	SUBGT r1, r1, r0
+	SUBLE r0, r0, r1 
+	B while 
+end:
+	B _good
+
+_bad :
 	nop
-	subs r2, r0, r1
-	bne while
+	nop
+_good :
 	nop
 	nop
-	mov r3, r0
-	nop
-	nop
-	nop
+
 
