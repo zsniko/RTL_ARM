@@ -13,7 +13,6 @@ _start:
 startup:
 	MOV r0, #15
 	MOV r1, #9
-	MOV r2, #1
 
 while:
 	CMP r0, r1
