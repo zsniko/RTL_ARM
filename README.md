@@ -1,6 +1,6 @@
-# ARM Single Core 4 Pipeline CPU RTL Design
+# RTL Design of a 4 stage pipelined ARMv3 CPU
 
-This project is the RTL design of an ARM single core 4 pipeline CPU. It is implemented in VHDL and can be simulated using GHDL.
+This project is the RTL design of an ARMv3 4-stage pipelined CPU. It is implemented in VHDL and can be simulated using GHDL.
 
 ![pipeline](Images/structure_pipeline.png)
 
