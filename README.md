@@ -51,6 +51,7 @@ Ensure that you have GHDL installed on your system. You may need to adjust the G
 
 ## Simulation and Testing
 
+Please make sure you change the compiler path in the makefiles to your path before proceeding.
 To simulate and test the processor, follow these steps:
 
 1. Navigate to the TB folder and run the make command:
